@@ -1,0 +1,33 @@
+def mostrar_menu():
+    print("\n--- Menú del Catálogo de Películas ---")
+    print("1. Agregar película")
+    print("2. Listar películas")
+    print("3. Eliminar catálogo")
+    print("4. Salir")
+
+nombre_catalogo = input("📁 Ingresá el nombre del catálogo: ")
+catalogo = CatalogoPeliculas(nombre_catalogo)
+
+while True:
+    mostrar_menu()
+    opcion = input("Elegí una opción (1-4): ")
+
+    if opcion == '1':
+        nombre_pelicula = input("🎞️ Ingresá el nombre de la película: ")
+        pelicula = Pelicula(nombre_pelicula)
+        catalogo.agregar(pelicula)
+
+    elif opcion == '2':
+        catalogo.listar()
+
+    elif opcion == '3':
+        confirmar = input("¿Estás segura/o de querer eliminar el catálogo? (s/n): ")
+        if confirmar.lower() == 's':
+            catalogo.eliminar()
+
+    elif opcion == '4':
+        print("👋 ¡Nos vemos!")
+        break
+
+    else:
+        print("⚠️ Opción no válida. Intentá de nuevo.")
